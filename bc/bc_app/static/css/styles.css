@@ -1,0 +1,56 @@
+*{
+    padding :0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+.container{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+header{
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 33px 9%;
+    background: transparent;
+
+}
+.content{
+    position: fixed;
+    top: 250px;
+    right: 100px;
+    left: 100px;
+    bottom: 0;
+}
+.backdrop{
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,.88);
+    background: rgba(0,0,0,.91);
+    margin: 2px 20px 10px;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+.grid{
+    margin: 20px 50px 20px 50px;
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     grid-auto-rows: 100px;
+}
+.box{
+    color: red;
+    border: 5px solid red;
+}

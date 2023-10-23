@@ -17,8 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from bc_app import views
-
 urlpatterns = [
-    path('', views.index),
-    path('admin/', admin.site.urls),
+    path('', views.index, name='home'),
+    path('admin/', admin.site.urls, name='admin'),
+    path('items/', views.pageItems, name='items'),
+    path('item/<int:id>', views.pageItem, name='item'),
 ]

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PathOfExile</title>
+    {% load static %}
+    <!-- custom css link-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+    <!-- boxcoins link-->
+    <link rel="stylesheet"
+          href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <!-- remixicoins link-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- google fonts link-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@1,700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <header>
+    <a href="{% url 'home' %}" class="logo">PathOfExile</a>
+    <img src="{% static 'images/logo.png' %}" style="width:230px; height:auto;"/>
+
+    <ul class="navlist">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'items' %}">Catalog</a></li>
+    </ul>
+
+    <div class="bx bx-menu" id="menu-icon"></div>
+</header>
+    <div class="content">
+        <div class="backdrop"></div>
+        <div class="grid">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+
+<!--<div class="icons">-->
+<!--    <a href="#"><i class="ri-instagram-line"></i></a>-->
+<!--    <a href="#"><i class="ri-telegram-line"></i></a>-->
+<!--</div>-->
+
+<!--<div class="scroll-down">-->
+<!--    <a href="#"><i class="ri-arrow-down-s-fill"></i></a>-->
+<!--</div>-->
+
+<!-- scrollreveal effect-->
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<!-- custom js link-->
+<script src="{% static 'js/script.js' %}"></script>
+
+</div>
+</body>
+</html>

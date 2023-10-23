@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class = 'itemShop'>
+  <div class="item-text">
+      {{ item.itemsName }}
+      {{ item.description }}
+      {{ item.itemsCount }}
+      {{ item.price }}
+       <img src="/static/images/{{ item.image }}">
+  </div>
+
+</section>
+{% endblock %}
