@@ -12,7 +12,11 @@
         <div class="itemText itemPrice">{{ item.price }}</div>
     </div>
     <div class="buttons">
-        <a href="{{ item.get_absolute_url }}">Ссылка</a>
+        <div class="itemText Detail">
+            <button>
+                <a href="{{ item.get_absolute_url }}">Detail</a>
+            </button>
+        </div>
     </div>
 </div>
 {% endblock %}

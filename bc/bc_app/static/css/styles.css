@@ -69,3 +69,7 @@ header{
 .itemText{
     text-align: center;
 }
+.buttons{
+    display: gird;
+    grid-template-columns: repeat(1, 1fr);
+}
