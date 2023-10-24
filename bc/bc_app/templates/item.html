@@ -1,14 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section class = 'itemShop'>
-  <div class="item-text">
-      {{ item.itemsName }}
-      {{ item.description }}
-      {{ item.itemsCount }}
-      {{ item.price }}
-       <img src="/static/images/{{ item.image }}">
-  </div>
-
-</section>
+<div class="box">
+    <div class="itemImage">
+        <img src="/static/images/{{ item.image }}">
+    </div>
+    <div class="itemInfo">
+        <div class="itemText itemName">{{ item.itemsName }}</div>
+        <div class="itemText itemDescription">{{ item.description }}</div>
+        <div class="itemText itemCount">{{ item.itemsCount }}</div>
+        <div class="itemText itemPrice">{{ item.price }}</div>
+    </div>
+    <div class="buttons">
+        <a href="{{ item.get_absolute_url }}">Ссылка</a>
+    </div>
+</div>
 {% endblock %}

@@ -1,13 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-      {% for item in item %}
-    <div class="box">
-        <div class="itemsName">{{ item.itemsName }}</div>
-        <div class="description">{{ item.description }}</div>
-        <div class="itemsCount">{{ item.itemsCount }}</div>
-        <div class="price">{{ item.price }}</div>
-        <div class="image"><img src="/static/images/{{ item.image }}"></div>
+{% for item in item %}
+<div class="box">
+    <div class="itemImage">
+        <img src="/static/images/{{ item.image }}">
     </div>
-      {% endfor %}
+    <div class="itemInfo">
+        <div class="itemText itemName">{{ item.itemsName }}</div>
+        <div class="itemText itemDescription">{{ item.description }}</div>
+        <div class="itemText itemCount">{{ item.itemsCount }}</div>
+        <div class="itemText itemPrice">{{ item.price }}</div>
+    </div>
+    <div class="buttons">
+        <a href="{{ item.get_absolute_url }}">Ссылка</a>
+    </div>
+</div>
+{% endfor %}
 {% endblock %}
+<!--#TODO Доделать страницу вывода большого кол-ва предметов-->
+<!--#TODO Ограничить кол-во выводимых предметов на странице или сделать бесконечный скролл вниз-->

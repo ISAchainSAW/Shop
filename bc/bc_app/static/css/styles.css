@@ -12,9 +12,11 @@
     right: 0;
     left: 0;
     bottom: 0;
+    background: #000  url(/static/images/backdrop.jpeg) no-repeat top center fixed;
+    z-index: 1;
 }
 header{
-    position: fixed;
+    position: relative;
     right: 0;
     top: 0;
     z-index: 1000;
@@ -27,7 +29,7 @@ header{
 
 }
 .content{
-    position: fixed;
+    position: absolute;
     top: 250px;
     right: 100px;
     left: 100px;
@@ -47,10 +49,23 @@ header{
 .grid{
     margin: 20px 50px 20px 50px;
      display: grid;
-     grid-template-columns: repeat(2, 1fr);
-     grid-auto-rows: 100px;
+     grid-template-columns: repeat(1, 1fr);
+     grid-auto-rows: auto;
 }
 .box{
-    color: red;
-    border: 5px solid red;
+    color: white;
+    display: grid;
+    border: 10px solid brown;
+    grid-template-columns: repeat(3, 1fr);
+}
+.itemImage{
+    margin-left: auto;
+    margin-right: auto;
+}
+.itemInfo{
+    margin-left: auto;
+    margin-right: auto;
+}
+.itemText{
+    text-align: center;
 }

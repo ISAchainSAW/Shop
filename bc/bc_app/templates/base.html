@@ -6,7 +6,7 @@
     <title>PathOfExile</title>
     {% load static %}
     <!-- custom css link-->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}?">
 
     <!-- boxcoins link-->
     <link rel="stylesheet"
@@ -35,13 +35,15 @@
     <div class="bx bx-menu" id="menu-icon"></div>
 </header>
     <div class="content">
+<!--        #TODO добавить фоновую картинку -->
         <div class="backdrop"></div>
         <div class="grid">
             {% block content %}{% endblock %}
         </div>
     </div>
-
-
+<!--#TODO добавить авторизацию-->
+<!--#TODO добавить корзину-->
+<!--#TODO добавить кнопки для покупки    -->
 <!--<div class="icons">-->
 <!--    <a href="#"><i class="ri-instagram-line"></i></a>-->
 <!--    <a href="#"><i class="ri-telegram-line"></i></a>-->
