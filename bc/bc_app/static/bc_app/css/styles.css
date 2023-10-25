@@ -12,7 +12,7 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background: #000  url(/static/images/backdrop.jpeg) no-repeat top center fixed;
+    background: #000  url(/static/bc_app/images/backdrop.jpeg) no-repeat top center fixed;
     z-index: 1;
 }
 header{

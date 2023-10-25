@@ -1,9 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'bc_app/base.html' %}
 
 {% block content %}
+{% for item in item %}
 <div class="box">
     <div class="itemImage">
-        <img src="/static/images/{{ item.image }}">
+        <img src="/static/bc_app/images/{{ item.image }}">
     </div>
     <div class="itemInfo">
         <div class="itemText itemName">{{ item.itemsName }}</div>
@@ -17,6 +18,12 @@
                 <a href="{{ item.get_absolute_url }}">Detail</a>
             </button>
         </div>
+        <div class="itemText addToCart">
+            <button>Add to cart</button>
+        </div>
     </div>
 </div>
+{% endfor %}
 {% endblock %}
+<!--#TODO Доделать страницу вывода большого кол-ва предметов-->
+<!--#TODO Ограничить кол-во выводимых предметов на странице или сделать бесконечный скролл вниз-->
