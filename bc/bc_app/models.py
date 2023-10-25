@@ -8,7 +8,7 @@ class Item(models.Model):
     description = models.CharField(max_length=100)
     itemsCount = models.IntegerField(default=0)
     price = models.IntegerField(default=0)
-    image = models.ImageField()
+    image = models.ImageField(upload_to='static/images/')
 
     def __str__(self):
         return self.itemsName
