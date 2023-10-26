@@ -3,7 +3,7 @@
 {% block content %}
 <div class="box">
     <div class="itemImage">
-        <img src="/static/bc_app/images/{{ item.image }}">
+        <img src="{{ item.image.url }}">
     </div>
     <div class="itemInfo">
         <div class="itemText itemName">{{ item.itemsName }}</div>

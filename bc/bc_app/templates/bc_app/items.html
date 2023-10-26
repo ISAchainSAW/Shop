@@ -1,21 +1,41 @@
 {% extends 'bc_app/base.html' %}
+{% block filter %}
+<div class="navlist">
+    <button class="filter">ФИЛЬТРАЦИЯ ПОЛЕЙ</button>
+</div>
+{% endblock %}
 
 {% block content %}
-{% for item in item %}
+<div id="category">
+    {% if cat_selected == 0 %}
+        <li class="selected">Все категории</li>
+    {% else %}
+        <li><a href="{% url 'items' %}">Все категории</a></li>
+    {% endif %}
+
+    {% for c in cat %}
+        {% if c.pk == cat_selected %}
+            <li class="selected">{{ c.categoryName }}</li>
+        {% else %}
+            <li><a href="{{ c.get_absolute_url }}">{{ c.categoryName }}</a></li>
+        {% endif %}
+    {% endfor %}
+</div>
+{% for it in item %}
 <div class="box">
     <div class="itemImage">
-        <img src="/static/bc_app/images/{{ item.image }}">
+        <img src="{{ it.image.url }}">
     </div>
     <div class="itemInfo">
-        <div class="itemText itemName">{{ item.itemsName }}</div>
-        <div class="itemText itemDescription">{{ item.description }}</div>
-        <div class="itemText itemCount">{{ item.itemsCount }}</div>
-        <div class="itemText itemPrice">{{ item.price }}</div>
+        <div class="itemText itemName">{{ it.itemsName }}</div>
+        <div class="itemText itemDescription">{{ it.description }}</div>
+        <div class="itemText itemCount">{{ it.itemsCount }}</div>
+        <div class="itemText itemPrice">{{ it.price }}</div>
     </div>
     <div class="buttons">
         <div class="itemText Detail">
             <button>
-                <a href="{{ item.get_absolute_url }}">Detail</a>
+                <a href="{{ it.get_absolute_url }}">Detail</a>
             </button>
         </div>
         <div class="itemText addToCart">
@@ -25,5 +45,3 @@
 </div>
 {% endfor %}
 {% endblock %}
-<!--#TODO Доделать страницу вывода большого кол-ва предметов-->
-<!--#TODO Ограничить кол-во выводимых предметов на странице или сделать бесконечный скролл вниз-->

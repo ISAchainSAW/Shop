@@ -25,7 +25,7 @@
 <div class="container">
     <header>
     <a href="{% url 'home' %}" class="logo">PathOfExile</a>
-    <img src="{% static 'bc_app/images/logo.png' %}" style="width:230px; height:auto;"/>
+    <img src="{{ img }}" style="width:230px; height:auto;"/>
 
     <ul class="navlist">
         <li><a href="{% url 'home' %}">Home</a></li>
@@ -35,19 +35,18 @@
     <div class="bx bx-menu" id="menu-icon"></div>
 </header>
     <div class="content">
-<!--        #TODO добавить фоновую картинку -->
         <div class="backdrop"></div>
+        {% block filter %}{% endblock %}
         <div class="grid">
             {% block content %}{% endblock %}
         </div>
     </div>
 <!--#TODO добавить авторизацию-->
 <!--#TODO добавить корзину-->
-<!--#TODO добавить кнопки для покупки    -->
-<!--<div class="icons">-->
-<!--    <a href="#"><i class="ri-instagram-line"></i></a>-->
-<!--    <a href="#"><i class="ri-telegram-line"></i></a>-->
-<!--</div>-->
+<div class="icons">
+    <a href="#"><i class="ri-instagram-line"></i></a>
+    <a href="#"><i class="ri-telegram-line"></i></a>
+</div>
 
 <!--<div class="scroll-down">-->
 <!--    <a href="#"><i class="ri-arrow-down-s-fill"></i></a>-->

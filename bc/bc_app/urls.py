@@ -5,4 +5,5 @@ urlpatterns = [
     path('', index, name='home'),
     path('items/', pageItems, name='items'),
     path('item/<int:id>/', pageItem, name='item'),
+    path('category/<int:cat_id>/', showCategory, name='category')
 ]

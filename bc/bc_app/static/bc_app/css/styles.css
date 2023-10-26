@@ -12,7 +12,7 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background: #000  url(/static/bc_app/images/backdrop.jpeg) no-repeat top center fixed;
+    background: #000  url(/media/static/bc_app/images/backdrop.jpeg) no-repeat top center fixed;
     z-index: 1;
 }
 header{
@@ -53,7 +53,6 @@ header{
      grid-auto-rows: auto;
 }
 .box{
-    color: white;
     display: grid;
     border: 10px solid brown;
     grid-template-columns: repeat(3, 1fr);
@@ -68,8 +67,38 @@ header{
 }
 .itemText{
     text-align: center;
+    color: white;
 }
 .buttons{
     display: gird;
     grid-template-columns: repeat(1, 1fr);
+}
+.filter{
+    margin: 20px 0 5px 70px;
+}
+#category{
+    color:white;
+    position:absolute;
+    z-index: 2;
+    border: 10px solid red;
+    width: 50%;
+    height: 50%;
+    background-color: grey;
+    display: none;
+}
+.icons{
+    position: absolute;
+    top: 36%;
+    padding: 13px 3%;
+}
+.icons i{
+    display: block;
+    margin: 26px 0;
+    fons-size: 24px;
+    color: white;
+    transition: all .50s ease;
+}
+.icons i:hover{
+    color: #4d9559;
+    transform: translateY(-5px);
 }
