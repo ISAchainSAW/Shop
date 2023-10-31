@@ -9,4 +9,7 @@ urlpatterns = [
     # path('category/<slug:cat_slug>/', showCategory, name='category'),
     path('category/<slug:cat_slug>/', itemCategory.as_view(), name='category'),
     path('addItem/', addItem.as_view(), name='addItem'),
+    path('login/', loginUser.as_view(), name='login'),
+    path('logout/', logoutUser, name='logout'),
+    path('register/', registerUser.as_view(), name='register'),
 ]

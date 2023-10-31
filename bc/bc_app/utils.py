@@ -2,10 +2,12 @@
 from .models import *
 
 menu = [{'link_name': 'Home', 'url_name': 'home'},
-        {'link_name': 'Catalog', 'url_name': 'items'}]
+        {'link_name': 'Catalog', 'url_name': 'items'},
+        ]
 
 
 class DataMixin():
+    paginate_by = 3
     def get_user_context(self, **kwargs):
         context = kwargs
         context['menu'] = menu
