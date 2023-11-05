@@ -39,8 +39,8 @@ class pageItems(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
     # С помощью данной фукнции можно указывать что выбирать в виде списка из модели
-    def get_queryset(self):
-        return Item.objects.filter(itemsCount__gte=3)
+    # def get_queryset(self):
+    #     return Item.objects.filter(itemsCount__gte=3)
 
 
 # def pageItems(request):
@@ -107,13 +107,14 @@ class addItem(LoginRequiredMixin, DataMixin, CreateView):
     form_class = AddItemForm
     template_name = 'bc_app/addItem.html'
     success_url = reverse_lazy('items')
-    login_url = reverse_lazy('items') # перенаправление неавторизованного пользователя
+    login_url = reverse_lazy('items')  # перенаправление неавторизованного пользователя
 
     # success_url = reverse_lazy('items') #куда перейти, после добавления формы
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)  # Получить уже существующий конеткст
         c_def = self.get_user_context()
         return dict(list(context.items()) + list(c_def.items()))
+
 
 # def addItem(request):
 #     if request.method == 'POST':
@@ -130,7 +131,7 @@ class addItem(LoginRequiredMixin, DataMixin, CreateView):
 
 class registerUser(DataMixin, CreateView):
     # form_class = UserCreationForm # Стандартная регистрация Django
-    form_class = RegisterUserForm # Кастомная регистрация
+    form_class = RegisterUserForm  # Кастомная регистрация
     template_name = 'bc_app/register.html'
     success_url = reverse_lazy('login')
 
@@ -141,13 +142,12 @@ class registerUser(DataMixin, CreateView):
 
     def form_valid(self, form):
         user = form.save()
-        login(self.request,user)
+        login(self.request, user)
         return redirect('items')
 
 
-
 class loginUser(DataMixin, LoginView):
-    form_class = LoginUserForm # Кастомная регистрация
+    form_class = LoginUserForm  # Кастомная регистрация
     template_name = 'bc_app/login.html'
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -158,6 +158,20 @@ class loginUser(DataMixin, LoginView):
     def get_success_url(self):
         return reverse_lazy('items')
 
+
 def logoutUser(request):
     logout(request)
     return redirect('items')
+
+
+def search(request):
+    search_query = request.GET.get('q')
+    results = Item.objects.filter(itemsName__icontains=search_query)
+    menu = [{'link_name': 'Home', 'url_name': 'home'},
+            {'link_name': 'Catalog', 'url_name': 'items'},
+            ]
+    context = {
+        'item': results,
+        'menu': menu,
+    }
+    return render(request, 'bc_app/items.html', context=context)

@@ -120,3 +120,7 @@ header{
     font-weight: 700;
     color: white;
 }
+#search {
+    position:relative;
+    margin: 20px 50px;
+}

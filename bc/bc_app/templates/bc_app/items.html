@@ -1,7 +1,14 @@
 {% extends 'bc_app/base.html' %}
 {% block filter %}
-<div>
-    <button class="filter">ФИЛЬТРАЦИЯ ПОЛЕЙ</button>
+<div id="search">
+    <!--    <button class="filter">ФИЛЬТРАЦИЯ ПОЛЕЙ</button>-->
+    <!--Search field-->
+    <form action="{% url 'search' %}" method='get'>
+
+        <input type="text" name="q" placeholder="Введите запрос">
+        <button type="submit" name="submit">Поиск</button>
+
+    </form>
 </div>
 {% endblock %}
 

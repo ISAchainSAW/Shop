@@ -32,11 +32,11 @@
             <li><a href="{% url m.url_name %}">{{ m.link_name }}</a></li>
             {% endfor %}
             {% if request.user.is_authenticated %}
-            <li>{{ user.username }}</li>
-            <li><a href="{% url 'logout' %}">Выйти</a></li>
+                <li><a>{{ user.username }}</a></li>
+                <li><a href="{% url 'logout' %}">Выйти</a></li>
             {% else %}
-            <li><a href="{% url 'register' %}">Регистрация</a></li>
-            <li><a href="{% url 'login' %}">Войти</a></li>
+                <li><a href="{% url 'register' %}">Регистрация</a></li>
+                <li><a href="{% url 'login' %}">Войти</a></li>
             {% endif %}
         </ul>
 
@@ -57,35 +57,29 @@
                 {% endif %}
                     {% for p in paginator.page_range %}
                     {% if page_obj.number == p %}
-                    <li class=""> {{ p }}</li>
+                        <li class=""> {{ p }}</li>
                     {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
-                    <li class="">
-                        <a href="?page={{ p }}">{{ p }}</a>
-                    </li>
+                        <li class="">
+                            <a href="?page={{ p }}">{{ p }}</a>
+                        </li>
                     {% endif %}
                     {% endfor %}
                 {% if page_obj.has_next %}
-                <li class="">
-                    <a href="?page={{ page_obj.next_page_number }}">&gt;</a>
-                </li>
+                    <li class="">
+                        <a href="?page={{ page_obj.next_page_number }}">&gt;</a>
+                    </li>
                 {% endif %}
                 </ul>
             </nav>
             {% endif %}
         </div>
     </div>
-<!--#TODO добавить авторизацию-->
-<!--#TODO добавить корзину-->
     <div class="icons">
         <a href="#"><i class="ri-instagram-line"></i></a>
         <a href="#"><i class="ri-telegram-line"></i></a>
     </div>
 
-<!--<div class="scroll-down">-->
-<!--    <a href="#"><i class="ri-arrow-down-s-fill"></i></a>-->
-<!--</div>-->
-
-    <!-- scrollreveal effect-->
+    <!-- scroll reveal effect-->
     <script src="https://unpkg.com/scrollreveal"></script>
 
     <!-- custom js link-->
