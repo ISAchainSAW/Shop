@@ -1,6 +1,7 @@
 {% extends 'bc_app/base.html' %}
 
 {% block content %}
+<a class="itemText" href="{% url 'items' %}">Назад</a>
 <div class="box">
     <div class="itemImage">
         <img src="{{ item.image.url }}">
@@ -8,15 +9,16 @@
     <div class="itemInfo">
         <div class="itemText itemName">{{ item.itemsName }}</div>
         <div class="itemText itemDescription">{{ item.description }}</div>
-        <div class="itemText itemCount">{{ item.itemsCount }}</div>
-        <div class="itemText itemPrice">{{ item.price }}</div>
+        <div class="itemText itemCount">Количество товара {{ item.itemsCount }}</div>
+        <div class="itemText itemPrice">Цена товара {{ item.price }}</div>
+
     </div>
-    <div class="buttons">
-        <div class="itemText Detail">
-            <button>
-                <a href="{{ item.get_absolute_url }}">Detail</a>
-            </button>
-        </div>
+    <div id="form">
+        <form class=itemText action="{% url 'cart_add' item.id %}" method="post">
+            {{ cart_product_form }}
+            {% csrf_token %}
+            <input type="submit" value="Add to cart">
+        </form>
     </div>
 </div>
 {% endblock %}

@@ -5,6 +5,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from cart.forms import CartAddProductForm
 from .models import *
 from .forms import *
 from .utils import *
@@ -63,6 +64,7 @@ class pageItem(DataMixin, DetailView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)  # Получить уже существующий конеткст
+        context['cart_product_form'] = CartAddProductForm()
         c_def = self.get_user_context()
         return dict(list(context.items()) + list(c_def.items()))
 
@@ -166,12 +168,12 @@ def logoutUser(request):
 
 def search(request):
     search_query = request.GET.get('q')
-    results = Item.objects.filter(itemsName__icontains=search_query)
+    item = Item.objects.filter(itemsName__icontains=search_query)
     menu = [{'link_name': 'Home', 'url_name': 'home'},
             {'link_name': 'Catalog', 'url_name': 'items'},
             ]
     context = {
-        'item': results,
+        'item': item,
         'menu': menu,
     }
     return render(request, 'bc_app/items.html', context=context)

@@ -4,7 +4,7 @@ from django.views.decorators.cache import cache_page
 
 urlpatterns = [
     path('', index, name='home'),
-    path('items/', cache_page(60)(pageItems.as_view()), name='items'),
+    path('items/', pageItems.as_view(), name='items'),
     path('item/<slug:item_slug>/', pageItem.as_view(), name='item'),
     path('category/<slug:cat_slug>/', itemCategory.as_view(), name='category'),
     path('addItem/', addItem.as_view(), name='addItem'),
