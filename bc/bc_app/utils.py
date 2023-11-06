@@ -3,6 +3,7 @@ from .models import *
 
 menu = [{'link_name': 'Home', 'url_name': 'home'},
         {'link_name': 'Catalog', 'url_name': 'items'},
+        {'link_name': 'Cart', 'url_name': 'cart_detail'},
         ]
 
 

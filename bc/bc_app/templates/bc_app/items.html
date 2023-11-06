@@ -1,27 +1,28 @@
 {% extends 'bc_app/base.html' %}
+
 {% block filter %}
-<div id="search">
+<div id="search" style="display:flex; justify-content:space-between">
     <!--    <button class="filter">ФИЛЬТРАЦИЯ ПОЛЕЙ</button>-->
     <!--Search field-->
     <form action="{% url 'search' %}" method='get'>
 
-        <input type="text" name="q" placeholder="Введите запрос">
-        <button type="submit" name="submit">Поиск</button>
+        <input type="text" name="q" placeholder="Search items...">
+        <button type="submit" name="submit">Search</button>
 
     </form>
-    <div class="cart">
+    <div style="display:flex">
     {% with total_items=cart|length %}
         {% if cart|length > 0 %}
-            Your cart:
-            <a href="{% url 'cart_detail' %}">
+            <h3 class="white">
+                Your cart:
                 {{ total_items }} item{{ total_items|pluralize }},
-                ${{ cart.get_total_price }}
-            </a>
+                {{ cart.get_total_price }}$
+            </h3>
         {% else %}
-            Your cart is empty.
+            <h3 class="white">Your cart is empty.</h3>
         {% endif %}
     {% endwith %}
-</div>
+    </div>
 </div>
 {% endblock %}
 
@@ -43,25 +44,38 @@
 </div>
 {% for it in item %}
 <div class="box">
-    <div class="itemImage">
+    <div class="itemInfo">
         <img src="{{ it.image.url }}">
     </div>
-    <div class="itemInfo">
-        <div class="itemText itemName">{{ it.itemsName }}</div>
-        <div class="itemText itemDescription">{{ it.description }}</div>
-        <div class="itemText itemCount">{{ it.itemsCount }}</div>
-        <div class="itemText itemPrice">{{ it.price }}</div>
+
+    <div class="itemText">
+        <div class="itemText_in">
+            <p>Category</p>
+            <p>{{ it.cat }}</p>
+        </div>
+        <div class="itemText_in">
+            <p>Name</p>
+            <p>{{ it.itemsName }}</p>
+        </div>
+        <div class="itemText_in">
+            <p>Description</p>
+            {{ it.description }}
+        </div>
+        <div class="itemText_in">
+            <p>Quantity on stock </p>
+            {{ it.itemsCount }}
+        </div>
+        <div class="itemText_in">
+            <p>Price</p>
+            {{ it.price }}$
+        </div>
     </div>
-    <div class="buttons">
-        <div class="itemText Detail">
-            <button>
-                <a href="{{ it.get_absolute_url }}">Detail</a>
-            </button>
-        </div>
-        <div class="itemText addToCart">
-            <button>Add to cart</button>
-        </div>
+    <div style="justify-self:center; margin:auto">
+        <button style="width: 70px; height:auto">
+            <a href="{{ it.get_absolute_url }}">Detail</a>
+        </button>
     </div>
 </div>
 {% endfor %}
 {% endblock %}
+

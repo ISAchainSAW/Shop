@@ -11,14 +11,14 @@ from .forms import *
 from .utils import *
 
 
-# Create your views here.
-# Переделать в class
 def index(request):
     context = {
-        'asd': 'Privet',
         'img': '/media/static/bc_app/images/logo.png',
-        'link_name': 'Catalog',
-        'url_name': 'items'
+        'menu': [
+            {'link_name': 'Home', 'url_name': 'home'},
+            {'link_name': 'Catalog', 'url_name': 'items'},
+            {'link_name': 'Cart', 'url_name': 'cart_detail'},
+        ],
     }
     return render(request, 'bc_app/index.html', context=context)
 
@@ -40,8 +40,8 @@ class pageItems(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
     # С помощью данной фукнции можно указывать что выбирать в виде списка из модели
-    # def get_queryset(self):
-    #     return Item.objects.filter(itemsCount__gte=3)
+    def get_queryset(self):
+        return Item.objects.filter(itemsCount__gt=0)
 
 
 # def pageItems(request):
@@ -61,10 +61,13 @@ class pageItem(DataMixin, DetailView):
     template_name = 'bc_app/item.html'
     context_object_name = 'item'  # Если не определить переменную, тоже работает ???
     slug_url_kwarg = 'item_slug'  # Переопределение переменной в url, default = slug
+    extra_context = {
+        'cart_product_form': CartAddProductForm()
+    }
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)  # Получить уже существующий конеткст
-        context['cart_product_form'] = CartAddProductForm()
+        # context['cart_product_form'] = CartAddProductForm()
         c_def = self.get_user_context()
         return dict(list(context.items()) + list(c_def.items()))
 
@@ -175,5 +178,6 @@ def search(request):
     context = {
         'item': item,
         'menu': menu,
+        'img': '/media/static/bc_app/images/logo.png'
     }
     return render(request, 'bc_app/items.html', context=context)

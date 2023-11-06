@@ -54,11 +54,7 @@ header{
 .box{
     display: grid;
     border: 10px solid brown;
-    grid-template-columns: repeat(3, 1fr);
-}
-.itemImage{
-    margin-left: auto;
-    margin-right: auto;
+    grid-template-columns: 1fr 2fr 1fr;
 }
 .itemInfo{
     margin-left: auto;
@@ -67,10 +63,7 @@ header{
 .itemText{
     text-align: center;
     color: white;
-}
-.buttons{
-    display: gird;
-    grid-template-columns: repeat(1, 1fr);
+    margin: 10px;
 }
 .filter{
     margin: 20px 0 5px 70px;
@@ -115,7 +108,7 @@ header{
 .navlist a:hover{
     border-bottom: 2px solid white;
 }
-.logo{
+#logo{
     font-size: 30px;
     font-weight: 700;
     color: white;
@@ -127,4 +120,11 @@ header{
 #form {
     position: relative;
     top: 33%;
+}
+.white {
+    color:white;
+}
+.itemText_in {
+    display:flex;
+    justify-content: space-between;
 }

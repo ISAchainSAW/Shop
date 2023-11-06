@@ -3,15 +3,30 @@
 {% block content %}
 <a class="itemText" href="{% url 'items' %}">Назад</a>
 <div class="box">
-    <div class="itemImage">
+    <div class="itemInfo">
         <img src="{{ item.image.url }}">
     </div>
-    <div class="itemInfo">
-        <div class="itemText itemName">{{ item.itemsName }}</div>
-        <div class="itemText itemDescription">{{ item.description }}</div>
-        <div class="itemText itemCount">Количество товара {{ item.itemsCount }}</div>
-        <div class="itemText itemPrice">Цена товара {{ item.price }}</div>
-
+    <div class="itemText">
+        <div class="itemText_in">
+            <p>Category</p>
+            <p>{{ it.cat }}</p>
+        </div>
+        <div class="itemText_in">
+            <p>Name</p>
+            <p>{{ item.itemsName }}</p>
+        </div>
+        <div class="itemText_in">
+            <p>Description</p>
+            {{ item.description }}
+        </div>
+        <div class="itemText_in">
+            <p>Quantity on stock </p>
+            {{ item.itemsCount }}
+        </div>
+        <div class="itemText_in">
+            <p>Price</p>
+            {{ item.price }}$
+        </div>
     </div>
     <div id="form">
         <form class=itemText action="{% url 'cart_add' item.id %}" method="post">
