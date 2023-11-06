@@ -1,0 +1,44 @@
+{% extends "bc_app/base.html" %}
+
+{% block content %}
+<h1 class="white">Корзина</h1>
+    <table class="itemText">
+        <thead>
+        <tr>
+            <th>Image</th>
+            <th>item</th>
+            <th>Quantity</th>
+            <th>Remove</th>
+            <th>Unit price</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for it in cart %}
+            {% with item=it.item %}
+                <tr>
+                    <td>
+                        <a href="{{ item.get_absolute_url }}">
+                            <img src="{{ item.image.url }}">
+                        </a>
+                    </td>
+                    <td>{{ item.itemsName }}</td>
+                    <td>{{ it.quantity }}</td>
+                    <td><a href="{% url 'cart_remove' item.id%}">&xotime;</a></td>
+                    <td class="num">{{ item.price }}$</td>
+                    <td class="num">{{ it.total_price }}$</td>
+                </tr>
+            {% endwith %}
+        {% endfor %}
+        <tr class="total">
+            <td>Total</td>
+            <td colspan="4"></td>
+            <td class="num">${{ cart.get_total_price }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="itemText">
+        <a href="{% url 'items' %}" class="itemText">Continue shopping</a>
+        <a href="{% url 'order_create' %}" class="itemText">Checkout</a>
+    </p>
+{% endblock %}
